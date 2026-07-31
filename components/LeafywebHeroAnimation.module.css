@@ -1,0 +1,460 @@
+:root {
+  --hero-bg: rgba(255, 122, 0, 0.06);
+  --hero-grid: rgba(255, 158, 45, 0.08);
+  --hero-line: rgba(255, 160, 55, 0.35);
+  --hero-node: rgba(255, 168, 50, 1);
+  --hero-node-soft: rgba(255, 168, 50, 0.18);
+  --hero-panel: rgba(255, 255, 255, 0.06);
+}
+
+.heroVisual {
+  position: relative;
+  width: min(100%, 520px);
+  height: min(100%, 420px);
+  max-width: 520px;
+  max-height: 420px;
+  aspect-ratio: 5 / 4;
+  border-radius: 28px;
+  overflow: hidden;
+  background: radial-gradient(circle at 34% 22%, rgba(255, 140, 30, 0.14), transparent 16%),
+    radial-gradient(circle at 62% 16%, rgba(255, 110, 0, 0.08), transparent 16%),
+    rgba(12, 12, 12, 0.98);
+  box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.35), inset 0 0 80px rgba(255, 120, 0, 0.04), 0 0 40px rgba(0, 0, 0, 0.28);
+}
+
+.backgroundGlow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 140, 40, 0.22), transparent 25%);
+  opacity: 0.85;
+  animation: hero-glow-slow 18s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 50%, transparent 55%, rgba(0, 0, 0, 0.35) 95%);
+}
+
+.lightSweep {
+  position: absolute;
+  top: -40%;
+  left: -20%;
+  width: 120%;
+  height: 120%;
+  background: linear-gradient(130deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.005), rgba(255, 255, 255, 0.04));
+  transform: translateX(-120%) rotate(-12deg);
+  opacity: 0.8;
+  animation: hero-light-sweep 10s ease-in-out infinite;
+}
+
+.grid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 76px 76px;
+  opacity: 0.14;
+  transform: translateZ(0);
+  animation: hero-grid-move 36s ease-in-out infinite;
+}
+
+.modules,
+.lines,
+.nodes,
+.energy {
+  position: absolute;
+  inset: 0;
+}
+
+.module {
+  position: absolute;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  box-shadow: inset 0 0 24px rgba(255, 145, 45, 0.05), 0 16px 30px rgba(0, 0, 0, 0.18);
+  border-radius: 18px;
+  opacity: 0;
+  transform: translateY(16px) scale(0.96);
+  animation: hero-module-appear 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.module:nth-child(1) {
+  animation-delay: 1.65s;
+}
+
+.module:nth-child(2) {
+  animation-delay: 1.95s;
+}
+
+.module:nth-child(3) {
+  animation-delay: 2.2s;
+}
+
+.module:nth-child(4) {
+  animation-delay: 2.4s;
+}
+
+.moduleHeader,
+.moduleRow,
+.moduleRowSmall {
+  display: block;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.moduleHeader {
+  width: 42%;
+  height: 10px;
+  margin: 16px 0 12px 16px;
+}
+
+.moduleRow {
+  width: 70%;
+  height: 8px;
+  margin: 0 0 10px 16px;
+}
+
+.moduleRowSmall {
+  width: 40%;
+  height: 6px;
+  margin: 0 0 0 16px;
+}
+
+.moduleGlow {
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  box-shadow: inset 0 0 28px rgba(255, 170, 90, 0.12);
+  opacity: 0;
+  animation: hero-module-glow 8s ease-in-out 1.8s infinite;
+}
+
+.lineWrapper {
+  position: absolute;
+  height: 2px;
+}
+
+.line {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(255, 180, 90, 0.6), rgba(255, 125, 0, 0.18));
+  opacity: 0;
+  transform-origin: left center;
+  animation: hero-line-draw 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.linePulse {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255, 180, 90, 0.95);
+  box-shadow: 0 0 18px rgba(255, 165, 65, 0.35);
+  opacity: 0;
+  transform: translateX(-10px);
+  animation: hero-line-pulse 3.6s ease-in-out infinite;
+}
+
+.node {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(255, 196, 108, 1), rgba(255, 136, 34, 0.95));
+  box-shadow: 0 0 28px rgba(255, 150, 55, 0.35);
+  opacity: 0;
+  transform: scale(0.4);
+  animation: hero-node-bloom 0.72s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.node:nth-child(1) {
+  animation-delay: 0.35s;
+}
+
+.node:nth-child(2) {
+  animation-delay: 0.75s;
+}
+
+.node:nth-child(3) {
+  animation-delay: 1.05s;
+}
+
+.node:nth-child(4) {
+  animation-delay: 1.25s;
+}
+
+.node:nth-child(5) {
+  animation-delay: 0.95s;
+}
+
+.center {
+  position: absolute;
+  top: 45%;
+  left: 46%;
+  width: 160px;
+  height: 160px;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  animation: hero-center-appear 1s ease-out 2.4s forwards;
+}
+
+.centerHalo {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(255, 140, 20, 0.22), transparent 58%);
+  opacity: 0;
+  animation: hero-center-halo 2.2s ease-out 2.4s forwards;
+}
+
+.centerCore,
+.centerSegment {
+  position: absolute;
+  border-radius: 999px;
+}
+
+.centerCore {
+  top: 50%;
+  left: 50%;
+  width: 36px;
+  height: 36px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(255, 232, 175, 1), rgba(255, 145, 45, 0.94));
+  box-shadow: 0 0 34px rgba(255, 160, 60, 0.6);
+}
+
+.centerSegment {
+  top: 50%;
+  left: 50%;
+  background: linear-gradient(135deg, rgba(255, 175, 90, 0.94), rgba(255, 120, 20, 0.16));
+  filter: blur(0.4px);
+  opacity: 0;
+  transform-origin: center;
+  animation: hero-center-segment 0.65s ease-out forwards;
+}
+
+.centerSegment:nth-child(1) {
+  animation-delay: 2.35s;
+}
+
+.centerSegment:nth-child(2) {
+  animation-delay: 2.45s;
+}
+
+.centerSegment:nth-child(3) {
+  animation-delay: 2.55s;
+}
+
+.centerSegment:nth-child(4) {
+  animation-delay: 2.65s;
+}
+
+.centerSegment:nth-child(5) {
+  animation-delay: 2.75s;
+}
+
+.energyDot {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255, 170, 60, 1);
+  box-shadow: 0 0 22px rgba(255, 150, 55, 0.35);
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: hero-energy-flow 4.2s ease-in-out infinite;
+}
+
+.energyDot:nth-child(1) {
+  animation-delay: 2.5s;
+}
+
+.energyDot:nth-child(2) {
+  animation-delay: 2.75s;
+}
+
+.energyDot:nth-child(3) {
+  animation-delay: 2.95s;
+}
+
+.energyDot:nth-child(4) {
+  animation-delay: 3.15s;
+}
+
+@keyframes hero-grid-move {
+  0% {
+    background-position: 0 0, 0 0;
+  }
+  100% {
+    background-position: 40px 40px, 40px 40px;
+  }
+}
+
+@keyframes hero-glow-slow {
+  0%, 100% {
+    opacity: 0.84;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.96;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes hero-module-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.92);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes hero-module-glow {
+  0%, 100% {
+    opacity: 0.05;
+  }
+  50% {
+    opacity: 0.18;
+  }
+}
+
+@keyframes hero-line-draw {
+  0% {
+    opacity: 0;
+    transform: scaleX(0) translateX(0);
+  }
+  60% {
+    opacity: 1;
+    transform: scaleX(1.02) translateX(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleX(1) translateX(0);
+  }
+}
+
+@keyframes hero-line-pulse {
+  0% {
+    opacity: 0;
+    transform: translateX(-10px) scale(0.8);
+  }
+  20% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+  80% {
+    opacity: 0.2;
+    transform: translateX(10px) scale(0.9);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(20px) scale(0.8);
+  }
+}
+
+@keyframes hero-node-bloom {
+  0% {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  65% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes hero-center-appear {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.6);
+  }
+  70% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes hero-center-halo {
+  0% {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  70% {
+    opacity: 0.85;
+    transform: scale(1.02);
+  }
+  100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+}
+
+@keyframes hero-center-segment {
+  0% {
+    opacity: 0;
+    transform: scale(0.72);
+  }
+  65% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes hero-energy-flow {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.85);
+  }
+  25% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  65% {
+    opacity: 0.4;
+    transform: translateY(8px) scale(0.95);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.85);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroVisual,
+  .backgroundGlow,
+  .grid,
+  .lightSweep,
+  .module,
+  .moduleGlow,
+  .line,
+  .linePulse,
+  .node,
+  .center,
+  .centerGlow,
+  .centerSegment,
+  .energyDot {
+    animation: none !important;
+    transition: none !important;
+  }
+}
