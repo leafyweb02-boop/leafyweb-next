@@ -26,7 +26,7 @@ const itemVariants = {
   },
 };
 
-type TemplateType = "restaurant" | "hotel" | "business";
+type TemplateType = "restaurant" | "hotel" | "business" | "shop" | "small-business" | "freelancer";
 
 interface TemplateCardProps {
   title: string;
@@ -111,6 +111,24 @@ export default function Templates() {
             title="🏨 Hotel"
             description="Elegant booking and hospitality websites."
             type="hotel"
+          />
+
+          <TemplateCard
+            title="🛍️ Shop"
+            description="A modern storefront for retail, lifestyle, and product-first brands."
+            type="shop"
+          />
+
+          <TemplateCard
+            title="🏪 Small Business"
+            description="Professional layouts for trusted local services and growing brands."
+            type="small-business"
+          />
+
+          <TemplateCard
+            title="💼 Freelancer"
+            description="A premium personal brand presentation for freelancers and creators."
+            type="freelancer"
           />
 
           <TemplateCard
@@ -217,6 +235,59 @@ function TemplateCard({
           </>
         )}
 
+        {/* Shop */}
+        {type === "shop" && (
+          <>
+            <div className="h-10 rounded-xl bg-violet-500/20 flex items-center px-4 mb-4">
+              <div className="h-3 w-20 rounded-full bg-violet-500"></div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-2 mb-4">
+              <div className="h-12 rounded-xl bg-[#1d1d1d] border border-white/10"></div>
+              <div className="h-12 rounded-xl bg-[#1d1d1d] border border-white/10"></div>
+              <div className="h-12 rounded-xl bg-[#1d1d1d] border border-white/10"></div>
+              <div className="h-12 rounded-xl bg-[#1d1d1d] border border-white/10"></div>
+            </div>
+
+            <div className="h-10 rounded-lg bg-violet-500"></div>
+          </>
+        )}
+
+        {/* Small Business */}
+        {type === "small-business" && (
+          <>
+            <div className="h-10 rounded-xl bg-emerald-500/20 flex items-center px-4 mb-4">
+              <div className="h-3 w-24 rounded-full bg-emerald-500"></div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-3 mb-4">
+              <div className="h-14 rounded-xl bg-[#1d1d1d] border border-white/10"></div>
+              <div className="h-14 rounded-xl bg-[#1d1d1d] border border-white/10"></div>
+              <div className="h-14 rounded-xl bg-[#1d1d1d] border border-white/10"></div>
+              <div className="h-14 rounded-xl bg-[#1d1d1d] border border-white/10"></div>
+            </div>
+
+            <div className="h-10 rounded-lg bg-emerald-500"></div>
+          </>
+        )}
+
+        {/* Freelancer */}
+        {type === "freelancer" && (
+          <>
+            <div className="h-10 rounded-xl bg-pink-500/20 flex items-center px-4 mb-4">
+              <div className="h-3 w-24 rounded-full bg-pink-500"></div>
+            </div>
+
+            <div className="space-y-3">
+              <div className="h-12 rounded-xl bg-[#1d1d1d] border border-white/10"></div>
+              <div className="h-12 rounded-xl bg-[#1d1d1d] border border-white/10"></div>
+              <div className="h-12 rounded-xl bg-[#1d1d1d] border border-white/10"></div>
+            </div>
+
+            <div className="h-8 rounded-lg bg-pink-500 mt-4"></div>
+          </>
+        )}
+
         {/* Business */}
         {type === "business" && (
           <>
@@ -270,7 +341,8 @@ function TemplateCard({
   Use Template
 </Link>
 
-  <button
+  <Link
+    href={`/templates/${type}`}
     className="
       rounded-xl
       border
@@ -280,10 +352,13 @@ function TemplateCard({
       duration-300
       hover:border-orange-500
       hover:text-orange-400
+      flex
+      items-center
+      justify-center
     "
   >
     Preview
-  </button>
+  </Link>
       </div>
     </motion.div>
   );

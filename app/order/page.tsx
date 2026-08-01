@@ -7,15 +7,22 @@ export default function OrderPage() {
   const [loading, setLoading] = useState(false);
   const [submissionError, setSubmissionError] = useState("");
 
-  const [formData, setFormData] = useState({
-    business_name: "",
-    contact_person: "",
-    whatsapp: "",
-    email: "",
-    business_type: "",
-    template: "",
-    website_description: "",
-    business_address: "",
+  const [formData, setFormData] = useState(() => {
+    const templateParam =
+      typeof window !== "undefined"
+        ? new URLSearchParams(window.location.search).get("template") ?? ""
+        : "";
+
+    return {
+      business_name: "",
+      contact_person: "",
+      whatsapp: "",
+      email: "",
+      business_type: "",
+      template: templateParam,
+      website_description: "",
+      business_address: "",
+    };
   });
   const [logo, setLogo] = useState<File | null>(null);
   const [images, setImages] = useState<File[]>([]);
