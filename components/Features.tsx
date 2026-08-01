@@ -51,6 +51,13 @@ const features = [
 ];
 
 export default function Features() {
+  const handleTemplatesScroll = () => {
+    document.getElementById("templates")?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
   return (
     <section
       id="features"
@@ -146,28 +153,60 @@ export default function Features() {
         {feature.description}
       </p>
 
-      <div
-  className="
-    mt-8
-    flex
-    items-center
-    gap-2
-    text-orange-500
-    font-semibold
-    opacity-0
-    translate-y-3
-    transition-all
-    duration-500
-    group-hover:opacity-100
-    group-hover:translate-y-0
-  "
->
-  Learn More
+      {feature.title === "Modern Templates" ? (
+        <button
+          type="button"
+          onClick={handleTemplatesScroll}
+          className="
+            mt-8
+            flex
+            items-center
+            gap-2
+            text-orange-500
+            font-semibold
+            opacity-0
+            translate-y-3
+            transition-all
+            duration-500
+            group-hover:opacity-100
+            group-hover:translate-y-0
+            focus:outline-none
+            focus-visible:ring-2
+            focus-visible:ring-orange-400
+            focus-visible:ring-offset-2
+            focus-visible:ring-offset-[#111111]
+          "
+        >
+          Learn More
 
-  <span className="transition-transform duration-300 group-hover:translate-x-2">
-    →
-  </span>
-</div>
+          <span className="transition-transform duration-300 group-hover:translate-x-2">
+            →
+          </span>
+        </button>
+      ) : (
+        <div
+          className="
+            mt-8
+            flex
+            items-center
+            gap-2
+            text-orange-500
+            font-semibold
+            opacity-0
+            translate-y-3
+            transition-all
+            duration-500
+            group-hover:opacity-100
+            group-hover:translate-y-0
+          "
+        >
+          Learn More
+
+          <span className="transition-transform duration-300 group-hover:translate-x-2">
+            →
+          </span>
+        </div>
+      )}
     </div>
   );
 })}
