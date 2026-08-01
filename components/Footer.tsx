@@ -15,18 +15,18 @@ export default function Footer() {
         <div className="absolute bottom-0 right-0 h-[350px] w-[350px] rounded-full bg-orange-500/5 blur-[120px]" />
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-6 py-20">
+      <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-20">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="grid gap-12 md:grid-cols-4"
+          className="grid grid-cols-1 gap-8 md:grid-cols-4 md:gap-12"
         >
           <div>
-            <h2 className="text-4xl font-bold text-orange-500">Leafyweb</h2>
+            <h2 className="text-3xl font-bold text-orange-500 sm:text-4xl">Leafyweb</h2>
 
-            <p className="mt-6 leading-8 text-gray-400">
+            <p className="mt-6 text-sm leading-7 text-gray-400 sm:text-base sm:leading-8">
               Build. Grow. Inspire.
               <br />
               Create beautiful websites in minutes with our intelligent platform.

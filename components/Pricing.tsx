@@ -75,7 +75,7 @@ export default function Pricing() {
   return (
     <section
       id="pricing"
-      className="relative overflow-hidden bg-[#111111] py-28 px-6 text-white"
+      className="relative overflow-hidden bg-[#111111] px-4 py-16 text-white sm:px-6 md:py-28"
     >
       {/* Background Glow */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -84,19 +84,19 @@ export default function Pricing() {
         <div className="absolute bottom-0 right-0 w-[450px] h-[450px] rounded-full bg-orange-500/5 blur-[140px]" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto">
+      <div className="relative mx-auto max-w-7xl">
 
-        <div className="text-center mb-20">
+        <div className="mb-12 text-center md:mb-20">
 
           <span className="px-5 py-2 rounded-full bg-orange-500/10 border border-orange-500/30 text-orange-400 uppercase tracking-[3px] text-sm font-semibold">
             Pricing
           </span>
 
-          <h2 className="mt-8 text-5xl font-bold">
+          <h2 className="mt-8 text-3xl font-bold sm:text-4xl md:text-5xl">
             Simple & Transparent Pricing
           </h2>
 
-          <p className="mt-6 text-gray-400 max-w-2xl mx-auto">
+          <p className="mx-auto mt-6 max-w-2xl text-sm text-gray-400 sm:text-base">
             Choose the perfect plan for your business.
           </p>
 
@@ -121,7 +121,7 @@ export default function Pricing() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid md:grid-cols-3 gap-8"
+          className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-8"
         >
           {plans.map((plan) => (
             <motion.div
@@ -131,7 +131,8 @@ export default function Pricing() {
                 relative
                 rounded-3xl
                 border
-                p-10
+                p-5
+                md:p-10
                 transition-all
                 duration-500
                 hover:-translate-y-4
@@ -151,12 +152,12 @@ export default function Pricing() {
                 {plan.name}
               </h3>
 
-              <p className="mt-3 text-gray-400">
+              <p className="mt-3 text-sm text-gray-400 sm:text-base">
                 {plan.description}
               </p>
 
               <div className="mt-8">
-                <span className="text-6xl font-bold">
+                <span className="text-4xl font-bold sm:text-5xl md:text-6xl">
                   {plan.price}
                 </span>
 
@@ -178,7 +179,7 @@ export default function Pricing() {
                       className="text-orange-500 flex-shrink-0"
                     />
 
-                    <span>{feature}</span>
+                    <span className="text-sm sm:text-base">{feature}</span>
                   </div>
                 ))}
               </div>

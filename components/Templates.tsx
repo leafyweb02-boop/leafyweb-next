@@ -38,7 +38,7 @@ export default function Templates() {
   return (
     <section
       id="templates"
-      className="relative overflow-hidden bg-[#111111] text-white py-28 px-6"
+      className="relative overflow-hidden bg-[#111111] text-white px-4 py-16 sm:px-6 md:py-28"
     >
       {/* Background Glow */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -47,13 +47,13 @@ export default function Templates() {
         <div className="absolute bottom-0 right-0 w-[450px] h-[450px] rounded-full bg-orange-500/5 blur-[140px]" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto">
+      <div className="relative mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-20"
+          className="mb-12 text-center md:mb-20"
         >
           <span className="inline-block px-5 py-2 rounded-full border border-orange-500/30 bg-orange-500/10 text-orange-400 uppercase tracking-[3px] text-sm font-semibold">
             Templates
@@ -80,13 +80,13 @@ export default function Templates() {
     Templates
   </span>
 
-  <h2 className="mt-8 text-5xl md:text-6xl font-bold leading-tight">
+  <h2 className="mt-8 text-3xl font-bold leading-tight sm:text-4xl md:text-6xl">
     Choose Your
     <br />
     Perfect Website
   </h2>
 
-  <p className="mt-8 max-w-3xl mx-auto text-xl text-gray-400 leading-9">
+  <p className="mx-auto mt-6 max-w-3xl text-base leading-7 text-gray-400 sm:text-lg md:mt-8 md:text-xl md:leading-9">
     Launch beautiful websites for restaurants, hotels, businesses,
     ecommerce stores and more using professionally crafted templates.
   </p>
@@ -99,7 +99,7 @@ export default function Templates() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid md:grid-cols-2 xl:grid-cols-3 gap-8"
+          className="grid grid-cols-2 gap-3 sm:gap-6 md:grid-cols-2 md:gap-8 xl:grid-cols-3"
         >
           <TemplateCard
             title="🍽️ Restaurant"
@@ -134,22 +134,25 @@ function TemplateCard({
       variants={itemVariants}
       className="
         group
-        rounded-3xl
+        rounded-2xl
         border
         border-white/10
         bg-white/5
         backdrop-blur-xl
-        p-8
+        p-3
         transition-all
         duration-500
         hover:-translate-y-3
         hover:scale-[1.02]
         hover:border-orange-500/40
         hover:shadow-[0_0_40px_rgba(255,122,0,0.18)]
+        sm:rounded-3xl
+        sm:p-5
+        md:p-8
       "
     >
       {/* Browser Preview */}
-      <div className="relative h-48 rounded-2xl bg-[#2b2b2b] overflow-hidden mb-8">
+      <div className="relative mb-4 h-32 overflow-hidden rounded-2xl bg-[#2b2b2b] sm:mb-6 sm:h-40 md:mb-8 md:h-48">
 
         {/* Orange Glow */}
         <div

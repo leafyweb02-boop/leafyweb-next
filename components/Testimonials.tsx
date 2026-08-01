@@ -49,7 +49,7 @@ const itemVariants = {
 export default function Testimonials() {
   return (
     <section
-      className="relative overflow-hidden bg-[#111111] py-28 px-6 text-white"
+      className="relative overflow-hidden bg-[#111111] px-4 py-16 text-white sm:px-6 md:py-28"
     >
       {/* Background Glow */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -58,24 +58,24 @@ export default function Testimonials() {
         <div className="absolute bottom-0 right-0 w-[450px] h-[450px] rounded-full bg-orange-500/5 blur-[140px]" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto">
+      <div className="relative mx-auto max-w-7xl">
 
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="text-center mb-20"
+          className="mb-12 text-center md:mb-20"
         >
           <span className="inline-block rounded-full border border-orange-500/30 bg-orange-500/10 px-5 py-2 text-sm uppercase tracking-[3px] text-orange-400">
             Testimonials
           </span>
 
-          <h2 className="mt-8 text-5xl font-bold">
+          <h2 className="mt-8 text-3xl font-bold sm:text-4xl md:text-5xl">
             What Our Clients Say
           </h2>
 
-          <p className="mt-6 max-w-2xl mx-auto text-gray-400">
+          <p className="mx-auto mt-6 max-w-2xl text-sm text-gray-400 sm:text-base">
             Trusted by restaurants, hotels and businesses around the world.
           </p>
         </motion.div>
@@ -85,18 +85,18 @@ export default function Testimonials() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid gap-8 md:grid-cols-3"
+          className="grid grid-cols-2 gap-3 sm:gap-6 md:grid-cols-3 md:gap-8"
         >
           {testimonials.map((item) => (
             <motion.div
               key={item.name}
               variants={itemVariants}
-              className="rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl transition-all duration-500 hover:-translate-y-3 hover:border-orange-500/40 hover:shadow-[0_0_40px_rgba(255,122,0,0.18)]"
+              className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-xl transition-all duration-500 hover:-translate-y-3 hover:border-orange-500/40 hover:shadow-[0_0_40px_rgba(255,122,0,0.18)] sm:rounded-3xl sm:p-6 md:p-8"
             >              <div className="mb-6 flex text-orange-400 text-xl">
                 ★★★★★
               </div>
 
-              <p className="leading-8 text-gray-300">
+              <p className="text-xs leading-6 text-gray-300 sm:text-sm sm:leading-7 md:text-base md:leading-8">
                 “{item.review}”
               </p>
 
