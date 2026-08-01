@@ -225,6 +225,18 @@ export default function OrderPage() {
       Hotel Template
     </option>
 
+    <option value="Shop Template">
+      Shop Template
+    </option>
+
+    <option value="Small Business Template">
+      Small Business Template
+    </option>
+
+    <option value="Freelancer Template">
+      Freelancer Template
+    </option>
+
     <option value="Business Template">
       Business Template
     </option>

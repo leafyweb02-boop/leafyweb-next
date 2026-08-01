@@ -2,6 +2,7 @@ export type TemplatePreviewKey =
   | "restaurant"
   | "hotel"
   | "shop"
+  | "business"
   | "small-business"
   | "freelancer";
 
@@ -113,6 +114,36 @@ export const templatePreviewData: TemplatePreviewRecord[] = [
       phone: "+1 (555) 420-1188",
       email: "hello@northloopmarket.com",
       address: "102 Charm Street, Market District",
+    },
+  },
+  {
+    slug: "business",
+    name: "Business",
+    label: "Business Template",
+    accent: "from-purple-500/25 to-fuchsia-500/10",
+    heroTitle: "Summit Ridge Group",
+    heroText:
+      "A polished corporate website for modern teams, trusted partnerships, and high-conversion outreach.",
+    aboutTitle: "Growth With Clarity",
+    aboutText:
+      "Summit Ridge Group helps ambitious companies present their services, leadership, and value proposition with confidence through a professional digital storefront.",
+    highlights: [
+      "Leadership Team",
+      "Client Success",
+      "Service Packages",
+      "Thoughtful Contact",
+    ],
+    galleryTitle: "Company Snapshot",
+    galleryItems: [
+      "Executive profile showcase",
+      "Service portfolio highlights",
+      "Case study moments",
+      "Business credibility visuals",
+    ],
+    contact: {
+      phone: "+1 (555) 351-9066",
+      email: "hello@summitridgegroup.com",
+      address: "21 Innovation Avenue, Downtown",
     },
   },
   {
